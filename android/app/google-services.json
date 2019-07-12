@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "901181995568",
+    "firebase_url": "https://instafluttergram.firebaseio.com",
+    "project_id": "instafluttergram",
+    "storage_bucket": "instafluttergram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901181995568:android:85233464456254ce",
+        "android_client_info": {
+          "package_name": "com.soumak.insta_flutter_gram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901181995568-kpotdg0n99s2f1momhnlui3mj7lpvlgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe8dn7EwGQdXHXWN7cNqmUrPSgAoSZibQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901181995568-kpotdg0n99s2f1momhnlui3mj7lpvlgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
