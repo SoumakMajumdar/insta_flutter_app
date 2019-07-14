@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FrontPage extends StatelessWidget {
+class FeedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

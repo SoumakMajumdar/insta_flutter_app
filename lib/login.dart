@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'feed.dart';
 import 'signup.dart';
 
-class FirstPage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,16 +12,28 @@ class FirstPage extends StatelessWidget {
         primaryColor: Colors.white,
         brightness: Brightness.light,
       ),
-      home: MainPage(),
+      home: LogPage(),
     );
   }
 }
 
-class MainPage extends StatelessWidget{
+
+
+class LogPage extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+
+    return _Logpage();
+  }
+}
+
+
+class _Logpage extends State<LogPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink,
+        backgroundColor: Colors.pink,
         body: Container(
             alignment: AlignmentDirectional.centerStart,
             child: ListView(
@@ -35,28 +47,28 @@ class MainPage extends StatelessWidget{
                 TextField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    hintText: "Username",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-                    hintStyle: TextStyle(color: Colors.white)
+                      hintText: "Username",
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                      hintStyle: TextStyle(color: Colors.white)
                   ),
                 ),
                 Container(height: 10.0,),
                 TextField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    hintText: "Password",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-                    hintStyle: TextStyle(color: Colors.white)
+                      hintText: "Password",
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                      hintStyle: TextStyle(color: Colors.white)
                   ),
                 ),
                 Container(height: 20.0,),
                 Opacity(
-                  opacity: 1.0,
-                  child: RaisedButton(
-                    elevation: 10.0,
-                    child: Text("Login", style: TextStyle(fontSize: 20.0),),
-                    onPressed: (){runApp(FrontPage());},
-                  )
+                    opacity: 1.0,
+                    child: RaisedButton(
+                      elevation: 10.0,
+                      child: Text("Login", style: TextStyle(fontSize: 20.0),),
+                      onPressed: (){runApp(FeedPage());},
+                    )
                 )
               ],
             )
