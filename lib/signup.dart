@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -35,6 +35,11 @@ class SignPage extends StatefulWidget{
 
 class _Signpage extends State<SignPage> {
 
+  final usrnmeController = TextEditingController();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final psswrdController = TextEditingController();
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = new GoogleSignIn();
 
@@ -57,6 +62,30 @@ class _Signpage extends State<SignPage> {
 
     print("Username : ${user.displayName}");
     return user;
+  }
+
+  void _add(usrnme, name, emailid, psswrd) {
+    DocumentReference documentReference = Firestore.instance.document("Users/$usrnme");
+
+      Map<String, String> data = <String, String>{
+        "username" : "$usrnme",
+        "password" : "$psswrd",
+        "name": "$name",
+        "emailid": "$emailid"
+      };
+      documentReference.setData(data).whenComplete(() {
+        print("Document Added");
+      }).catchError((e) => print(e));
+    }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    usrnmeController.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    psswrdController.dispose();
+    super.dispose();
   }
 
   @override
@@ -84,6 +113,7 @@ class _Signpage extends State<SignPage> {
                           borderRadius: BorderRadius.circular(10.0)),
                       hintStyle: TextStyle(color: Colors.white)
                   ),
+                  controller: nameController,
                 ),
                 Container(height: 10.0,),
                 TextField(
@@ -94,6 +124,7 @@ class _Signpage extends State<SignPage> {
                           borderRadius: BorderRadius.circular(10.0)),
                       hintStyle: TextStyle(color: Colors.white)
                   ),
+                  controller: usrnmeController,
                 ),
                 Container(height: 10.0,),
                 TextField(
@@ -104,6 +135,7 @@ class _Signpage extends State<SignPage> {
                           borderRadius: BorderRadius.circular(10.0)),
                       hintStyle: TextStyle(color: Colors.white)
                   ),
+                  controller: emailController,
                 ),
                 Container(height: 10.0,),
                 TextField(
@@ -114,6 +146,7 @@ class _Signpage extends State<SignPage> {
                           borderRadius: BorderRadius.circular(10.0)),
                       hintStyle: TextStyle(color: Colors.white)
                   ),
+                  controller: psswrdController,
                 ),
                 Container(height: 20.0,),
                 Opacity(
@@ -122,6 +155,11 @@ class _Signpage extends State<SignPage> {
                       elevation: 10.0,
                       child: Text("Signup", style: TextStyle(fontSize: 20.0),),
                       onPressed: () {
+                        var usrnme = usrnmeController.text;
+                        var psswrd = psswrdController.text;
+                        var emailid = emailController.text;
+                        var name = nameController.text;
+                        _add(usrnme, name, emailid, psswrd);
                         runApp(FeedPage());
                       },
                     )
